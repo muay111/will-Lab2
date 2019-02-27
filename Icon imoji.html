@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="Style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body background="M.jpg">
+    
+
+    <div class="container">
+            <ul>
+    <div id="game" >
+            
+                    <button @click="like"><img src="https://cdn3.iconfinder.com/data/icons/social-icons-5/606/Like.png" alt="" width="100" height="100"> {{icon.like}}</button> 
+                    <button @click="love"><img src="https://www.freeiconspng.com/uploads/facebook-circle-heart-love-png-4.png" alt="" width="100" height="100"> {{icon.love}}</button>
+                    <button @click="haha"><img src="https://i0.wp.com/www.vectorico.com/wp-content/uploads/2018/02/Facebook-Haha.png?resize=300%2C300" alt="" width="100" height="100"> {{icon.haha}}</button>
+                    <button @click="wow"><img src="https://i1.wp.com/www.vectorico.com/wp-content/uploads/2018/02/Facebook-Wow.png?resize=300%2C300" alt="" width="100" height="100"> {{icon.wow}}</button>
+                    <button @click="sad"><img src="https://png2.kisspng.com/20180402/kfe/kisspng-facebook-like-button-sadness-emoticon-emoji-face-5ac2f1f3ad2b12.5340344715227253637093.png" alt="" width="100" height="100"> {{icon.sad}}</button>
+                    <button @click="anglry"><img src="https://i1.wp.com/www.vectorico.com/wp-content/uploads/2018/02/Facebook-Angry.png?resize=300%2C300" alt="" width="100" height="100"> {{icon.anglry}}</button>
+                    
+       
+    </div>
+    
+</ul>
+    <div class="PlayerVSmonster  container" id="PlayerVSmonster" >
+        <center><h1 >PLAYER VS MONSTER</h1>
+            <button @click="Start"><h2>Start</h2></button>
+            <h1>SCORE: {{score}}</h1>
+           
+            
+        
+        </center>
+        <center>
+                
+            <section>
+                    <div class="Player " >
+                        <h1>[ YOU ]</h1>
+                            <button><img src="K.gif" alt="" :width="player.hp" :height="player.hp">{{player.hp}}</button><br>
+                            <h1>HP : {{player.hp}}</h1>
+                            <h1>Attack : {{player.damageAtk}}</h1>
+                            <h1>Special Attack : {{player.damageScAtk}}</h1>
+                            <button @click="Attack" >Attack</button >
+                            
+                    </div>
+
+            </section>
+            
+            <aside>
+                    <div class="monster ">
+                        <h1>[ MOSTER ]</h1>
+                            <button ><img src="N.jpg" alt="" :width="Monster.hp" :height="Monster.hp">{{Monster.hp}}</button> <br>
+                            <h1>HP : {{Monster.hp}}</h1>
+                            <h1>Attack : {{Monster.damageAtk}}</h1>
+                            <h1>Special Attack : {{Monster.damageScAtk}}</h1>
+                            <button @click="SpecialAttack">Special Attack</button >
+                            
+                   
+                   </div>
+
+            </aside>
+
+            
+        </center>
+
+
+    </div>
+        
+</div>
+    
+            
+</body>
+</html>
+<script>
+
+        
+        var game = new Vue({
+        el:'#game', //ผูกกับ id
+        data: {
+                icon:{
+                    like: 0,
+                    love: 0,
+                    haha: 0,
+                    wow: 0,
+                    sad : 0,
+                    anglry: 0
+                }
+            },
+            methods:{
+                like:function(){
+                    this.icon.like=this.icon.like+1;
+                },
+                love:function(){
+                    this.icon.love=this.icon.love+1;
+                },
+                haha:function(){
+                    this.icon.haha=this.icon.haha+1;
+                },
+                wow:function(){
+                    this.icon.wow=this.icon.wow+1;
+                },
+                sad:function(){
+                    this.icon.sad=this.icon.sad+1;
+                },
+                anglry:function(){
+                    this.icon.anglry=this.icon.anglry+1;
+                }
+                
+            }
+        
+
+    })
+            var PlayerVSmonster = new Vue({
+                el:'#PlayerVSmonster',
+                data:{
+                score:'', 
+                player:{
+                       hp:0,
+                       minatk:3,
+                       maxatk:10,
+                       minSpatk:10,
+                       maxSpatk:20,
+                       damageAtk: 0,
+                       damageScAtk:0
+                },
+                Monster:{
+                    hp:0,
+                       minatk:5,
+                       maxatk:15,
+                       minSpatk:5,
+                       maxSpatk:15,
+                       damageAtk: 0,
+                       damageScAtk:0
+                }
+                },
+                methods:{
+                    Attack:function(){
+                        this.player.damageAtk= Math.max(Math.floor(Math.random()* this.player.maxatk)+1,this.player.minatk);
+                        this.Monster.damageAtk = Math.max(Math.floor(Math.random()* this.Monster.maxatk)+1,this.Monster.minatk);
+                        this.Monster.hp = this.Monster.hp-this.player.damageAtk;
+                        this.player.hp = this.player.hp-this.Monster.damageAtk;
+                        if(this.Monster.hp>0&&this.player.hp<=0){
+                            this.player.hp = 0;
+                            
+                            this.score = 'MONSTER WIN';
+                        
+                            
+                        }
+                        if(this.player.hp>0&&this.Monster.hp<=0){
+                            this.Monster.hp = 0;
+                            
+                            this.score = 'YOU WIN';
+                        
+                        
+                        }
+                        else if(this.player.hp<=0&&this.Monster.hp<=0){
+                            this.Monster.hp = 0;
+                            this.player.hp = 0;
+                            this.score = 'DAW';
+                        }
+                        
+                        
+                },
+                    score:function(){
+                        
+                        
+                        
+
+                },
+                    SpecialAttack:function(){
+                        this.player.damageScAtk= Math.max(Math.floor(Math.random()* this.player.maxSpatk)+1,this.player.minSpatk);
+                        this.Monster.damageScAtk= Math.max(Math.floor(Math.random()* this.Monster.maxSpatk)+1,this.Monster.minSpatk);
+                        this.Monster.hp = this.Monster.hp-this.player.damageScAtk;
+                        this.player.hp = this.player.hp-this.Monster.damageScAtk;
+                        if(this.Monster.hp>0&&this.player.hp<=0){
+                            this.player.hp = 0;
+                            
+                            this.score = 'MONSTER WIN';
+                        
+                            
+                        }
+                        if(this.player.hp>0&&this.Monster.hp<=0){
+                            this.Monster.hp = 0;
+                            
+                            this.score = 'YOU WIN';
+                        
+                        
+                        }
+                        else if(this.player.hp<=0&&this.Monster.hp<=0){
+                            this.Monster.hp = 0;
+                            this.player.hp = 0;
+                            this.score = 'DAW';
+                        }
+                        
+                },
+                    Start:function(){
+                        this.player.hp = 100;
+                        this.Monster.hp = 100;
+                        this.player.damageAtk = 0;
+                        this.Monster.damageAtk = 0;
+                        this.player.damageScAtk = 0;
+                        this.Monster.damageScAtk = 0;
+                    },
+                    
+                    
+
+                }
+            })
+
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<style>
+body {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c3e5099;
+  text-rendering: optimizelegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-text-size-adjust: none;
+}
+
+#app {
+  max-width: 30em;
+  margin: 1em auto;
+}
+</style>
+<body>
+    <div id="app">
+        <h1>Vue Select</h1>
+        <v-select :options="options"></v-select>
+      </div>
+      
+      <script src="https://unpkg.com/vue@latest"></script>
+      <script src="https://unpkg.com/vue-select@latest"></script>
+</body>
+<script>
+Vue.component('v-select', VueSelect.VueSelect)
+
+    new Vue({
+      el: '#app',
+      data: {
+        options: [
+          'foo',
+          'bar',
+          'baz'
+        ]
+      }
+    })</script>
+</html>

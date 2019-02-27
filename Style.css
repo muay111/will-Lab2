@@ -1,0 +1,25 @@
+section{
+    margin-top: 2ex;    
+    margin-left: 200px;
+  
+    float: left;
+
+}
+aside{
+    margin-top: 4ex;
+   
+    margin-right: 400px;
+    margin-bottom: 100%;
+    
+    
+    float: right;
+}
+.clearfix{
+    clear: both;
+    
+}
+.pad{
+    padding: 1em;
+}
+
+

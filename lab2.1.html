@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div id = "lab" class="container">
+   
+    <div class="form-group">
+            <label for="exampleFormControlSelect1">เลือกคณะ</label>
+            <select v-model="v1"class="form-control" id="exampleFormControlSelect1">
+              <option value="null" disabled selected>เลือก</option>
+              <option v-for="mm in kana" v-bind:value="mm.id">{{mm.name}} </option>
+            
+            
+            </select>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">รหัสหลักสูตร</th>
+                    <th scope="col">รายชื่อหลักสูตร</th>
+                    <th scope="col">หลักสูตร(ปี)</th>
+                   
+                  </tr>
+                </thead>
+                <tbody v-for="tmajor in major[v1]">
+                  <tr>
+                    
+                    <td>{{tmajor.code}}</td>
+                    <td>{{tmajor.name}}</td>
+                    <td>{{tmajor.Course}}</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body> 
+  <script>
+  var ma = new Vue({
+      el: '#lab',
+      data: {
+        v1: null,
+         kana: [{
+           name: 'พัฒนาการท่องเที่ยว',
+           id:1
+         },
+         {
+           name: 'วิทยาลัยบริหารศาสตร์',
+           id: 2
+         },
+         {
+           name: 'วิทยาลัยพลังงานทดแทน',
+           id:3
+         }
+         
+         ],
+         major: {
+           1:[
+        {
+          code: '59309020',
+          name: '	การจัดการธุรกิจท่องเที่ยว',
+          Course: 4 
+
+        },
+        {
+          code: '55109010',
+          name: 'พัฒนาการท่องเที่ยว',
+          Course: 2 
+        },
+        {
+          code: '55309010',
+          name: 'พัฒนาการท่องเที่ยว',
+          Course: 4
+        },
+        {
+          code: '58109010',
+          name: 'พัฒนาการท่องเที่ยว',
+          Course: 2
+        }
+           ],
+           2:[{
+             code: '60305040',
+             name: '	รัฐประศาสนศาสตร์',
+             Course: 4
+           },
+           {
+             code: '56305010',
+             name: 'รัฐศาสตร์',
+             Course: 4
+           },
+           {
+             code: '56305030',
+             name: 'การบริหารท้องถิ่น',
+             Course: 4
+           }
+           ],
+           3:[{
+             code: '61115030',
+             name: 'วิศวกรรมการอนุรักษ์พลังงาน',
+             Course: 2
+           },
+           {
+             code: '61315010',
+             name: 'พลังงานทดแทน',
+             Course: 4
+           },
+           {
+             code: '56315010',
+             name: 'พลังงานทดแทน',
+             Course: 4
+           },
+           {
+             code: '521184',
+             name: 'พลังงานทดแทน',
+             Course: 4
+           }
+           ],
+
+         }
+        
+      }
+
+
+  })
+  </script>
+</html>

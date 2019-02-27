@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Homework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+     <div id="hw">    
+                    <label for="new-todo">Add a todo : </label>
+                    <select v-model="selected">
+                        <option disabled value="">Please select one</option>
+                        <option value="cs494">cs494</option>
+                        <option value="LR242">LR242</option>
+                        <option value="cs344">cs344</option>
+                    </select>
+                    <form v-on:submit.prevent="addNewTodo">
+                        <input v-model="newTodoText" id="new-todo" placeholder="Homework">
+                        <button>Add</button>
+                    </form>
+                    <ul>
+                        <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title"
+                            v-bind:major="todo.major" v-on:remove="todos.splice(index, 1)"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    Vue.component(
+        'todo-item', {
+            template: '\
+    <li>\
+      {{ major}} :{{ title }}\
+      <button v-on:click="$emit(\'remove\')">Remove</button>\
+    </li>\
+  ',
+            props: ['title', 'major'],
+        })
+    new Vue({
+        el: '#hw',
+        data: {
+            selected: '',
+            newTodoText: '',
+            todos: [
+                   
+               
+            ],
+            nextTodoId: 4
+        },
+        methods: {
+            addNewTodo: function () {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText,
+                    major: this.selected
+                })
+                this.newTodoText = ''
+            }
+        }
+
+    })
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="lab">
+         <h5>{{msg}}</h5>
+        <!-- <input type="text" v-model = "msg"> -->
+        <input type="text" v-model.lazy = "msg">
+        <button v-bind:disabled="isButtondisabled">0k</button>
+        <h1><a :href="url">Google</a></h1> <br>
+        <button v-on:click="Greet">Greet</button>
+        <button @click="like">Like</button>
+
+
+    </div>
+</body>
+</html>
+<script>
+
+    var lab2 = new Vue({
+        el:'#lab', //ผูกกับ id
+        data: {
+            url: 'https://www.google.co.th/?hl=th',
+            isButtondisabled: false,
+            msg:'สวัสดีค่ะ :)',
+            studentCode:'5904101331',
+            name : '',
+            lastname: '',
+            major: '',
+            gpa: [3.99,3.50,3.12,4.00,1.80],
+           
+        },
+        methods:{
+            Greet:function(){
+                this.msg=this.msg+' Maejo '+this.studentCode;
+            },
+            
+        }
+        
+
+    })
+
+</script>
